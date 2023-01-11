@@ -81,7 +81,7 @@ var textures = {
             }
         }
     },
-    grassSide: function(n) {
+    fSide: function(n) {
         var r = 0, g = 0, b = 0, d = 0;
         var pix = getPixels("0g0g70ordrzz0u30g730wa4vzz0xnyl8f11lrk7315qj7jz1fh47pb6553365533033636350335403653650063306333633300635163503655353653535605335031350330553500033033366333433663663535336655335055335553353530355333033503300333336635353663650660554353355635155305303053556333333366353323553060365553063030663533555365534355335530");
         for (var i = 0; i < pix.length; i += 4) {
@@ -138,7 +138,7 @@ var textures = {
     stone: "0g0g40sywflr0wb8hdr0zdjj0f13tzldr3333211210112222221212222220012121001110111222222233232233222111122111212333312223222222211010131223331331112222110010112211122233323223332222212232223332233332021211001212211122222332222233232111232112200101332112211122111321122222222233332222221123322122",
     logSide: "0g0g60fl1ssf0l5j1fj0qftm2n0wa7mdb14cs7wf16az8xr3143304330341432315230523034133230223052313113324032313232301342413230325232314343134131524131432313422343433143230343243342324331053324324242433315332332414303333432303231430331343230533053135133424052303323531343314231333343143340313114334314134131331432",
     logTop: "0g0g90l5j1fj0qftm2n0wa7mdb0z2esxr15quebj189da7z1cpma671f7ppfj1hzyayn1012101120110111077776768667777017334454555544811738877776777471164766666666756107576445544674601646636666466471165764655656756116576465464674610657646666566460164764434556756116576666666674610757767777787460175454444444447117776676686677711011101120110211",
-    bedrock: "0g0g509gy58f0e7f7r30o8fd330rkrev31627mkf3111124324211212133434341443012110110111412224232433202422111112014111121134433112221221102211014432344323443410222122211011213234421122344344442110121213211143334134410144431102221123442334402111321134111112343420211101234433211211234421121011044312301123",
+//     bedrock: "0g0g509gy58f0e7f7r30o8fd330rkrev31627mkf3111124324211212133434341443012110110111412224232433202422111112014111121134433112221221102211014432344323443410222122211011213234421122344344442110121213211143334134410144431102221123442334402111321134111112343420211101234433211211234421121011044312301123",
     glass: "0g0g50ybfh8f0znkiyo12rzshr1au95hb1lytipr4444444444444443411111111111111341114111111111104114111111111110413111111111111041111111111111124111111111111110411111111111111241111111111111124111111111111112411111111111111241111111111111123111111111111412411111111111411231111111111111133323222222222233",
     cobblestone: "0g0g60muaccf0r0pekf0un11q711vr5rz1a8mosf1ef1r0f2144011454313543145330554330132314342143342101321132113232134310021354131154443152453321033543234313433211243215332233213541231321542213533311021543232233121341323231101221044532211235411035532354215434213323154331432332113244323212332143111311232121135432",
     mossyCobble: "0g0gb0muaccf0mupnnj0p38xdr0r0pekf0rbmj9b0un11q70w1wkxr0y07svz11vr5rz1a8mosf1ef1r0f4199211276438a9619a8812764813858398951644251118533852182851464110531183233866642a176895308948428981498852118851988111851664158385117641484642305126244558824124185442111155214698112124761318998127651764653885847488164588511858685851588531841183352111338a984",
@@ -225,9 +225,9 @@ var blockData = [
         name: "grass",
         textures: ["dirt", "grassTop", "grassSide"]
     },
-    { name: "dirt" },
+//     { name: "dirt" },
     { name: "stone" },
-    { name: "bedrock" },
+    { name: "f" },
     { name: "sand" },
     { name: "gravel" },
     {
@@ -1953,8 +1953,8 @@ Chunk.prototype.populate = function() {
                 for (var j = ground + 1; j <= top; j++) {
                     this.setBlock(i, j, k, tree);
                 }
-                this.setBlock(i, top + 1, k, blockIds.leaves);
-                this.setBlock(i, ground, k, blockIds.dirt);
+                this.setBlock(i, top + 1, k, blockIds.bedrock);
+                this.setBlock(i, ground, k, blockIds.bedrock);
                 
                 //Bottom leaves
                 for (var x = -2; x <= 2; x++) {
@@ -2138,7 +2138,7 @@ var genChunk = function(chunk) {
             for (var j = 1; j < gen - 3; j++) {
                 chunk.setBlock(i, j, k, blockIds.stone, true);
             }
-            chunk.setBlock(i, 0, k, blockIds.bedrock, true);
+            chunk.setBlock(i, 0, k, blockIds./, true);
         }
     }
     chunk.generated = true;
@@ -2628,7 +2628,7 @@ var drawButton = function(button) {
 };
 
 var splashText = [
-    "No easter eggs", "By ScusX & Willard!", "!sdrawkcaB", "var fun = true;", "Hey, you!", "Can render 400,000 blocks!", "Updates incoming", "No hidden fees!", "Hippopotamus!", "Gotta catch them all!", "Not greyscale", "9 + 10 = 21", "Someday...", "*SIGH*", "parseInt()", "get(rect());", "qwertyuiopasdfghjklzxcvbnm", "Nope.", "Sometimes, having a giant monitor is really helpful.", "igpay atinlay", "Five more minutes?", "Also try GameChiefCraft", "Also try Ultimate Platformer", "What's the opposite of right? Wrong!", "Feeling snackish? I know the feeling.", "Hey look! It's invisible!", "...", "Never trust semicolon closing parenthesis", ":D", ":P", "LG logo is pacman!", "Don't mine bedrock", "Cross-platform, if you build the platform", "Better than legos, not legolas"];
+//     "No easter eggs", "By ScusX & Willard!", "!sdrawkcaB", "var fun = true;", "Hey, you!", "Can render 400,000 blocks!", "Updates incoming", "No hidden fees!", "Hippopotamus!", "Gotta catch them all!", "Not greyscale", "9 + 10 = 21", "Someday...", "*SIGH*", "parseInt()", "get(rect());", "qwertyuiopasdfghjklzxcvbnm", "Nope.", "Sometimes, having a giant monitor is really helpful.", "igpay atinlay", "Five more minutes?", "Also try GameChiefCraft", "Also try Ultimate Platformer", "What's the opposite of right? Wrong!", "Feeling snackish? I know the feeling.", "Hey look! It's invisible!", "...", "Never trust semicolon closing parenthesis", ":D", ":P", "LG logo is pacman!", "Don't mine bedrock", "Cross-platform, if you build the platform", "Better than legos, not legolas"];
 var splashSelect = Math.floor(random(0, splashText.length));
 var textLength = splashText[splashSelect].length * 0.7;
 
